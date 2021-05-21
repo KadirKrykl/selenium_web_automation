@@ -9,8 +9,9 @@ public class SearchPage {
     private By nextButton = By.xpath("//*[@id='best-match-right']/div[5]/ul/li[7]/a");
     private By currentPage = By.className("current");
     private By items = By.className("catalog-seem-cell");
-    private By cookiesClose = By.xpath("/html/body/div[4]/div[2]/div/div/a/span");
+    private By cookiesClose = By.cssSelector("div.policy-alert > div > div > a > span");
     private By popupClose = By.xpath("/html/body/div[6]/div/img[1]");
+    private By noProductText = By.cssSelector("#empty-cart-container > div.gg-d-24 > div:nth-child(1) > div > div.gg-w-22.gg-d-22.gg-t-21.gg-m-18 > h2");
 
 
     public SearchPage(WebDriver driver){
@@ -21,9 +22,11 @@ public class SearchPage {
         return driver.findElement(currentPage).getText();
     }
 
-    public void goNextPage() {
+    public void goNextPage(){
         try {
+            Thread.sleep(1000);
             driver.findElement(popupClose).click();
+            Thread.sleep(1000);
             driver.findElement(cookiesClose).click();
         } catch (Exception e) {
             
@@ -42,4 +45,6 @@ public class SearchPage {
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         return new ProductPage(driver);
     }
+
+    
 }

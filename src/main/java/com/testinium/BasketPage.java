@@ -30,4 +30,12 @@ public class BasketPage {
         driver.findElement(delete).click();
         Thread.sleep(1000);
     }
+
+    public int getCountOfProduct() {
+        try {
+            return driver.findElements(By.className("product-group-box")).size();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 }
