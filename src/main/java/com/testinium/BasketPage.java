@@ -8,14 +8,15 @@ import java.util.concurrent.TimeUnit;
 public class BasketPage {
     protected WebDriver driver;
     private By price = By.cssSelector(".total-price>strong");
-    private By amount = By.className("amount");
-    private By delete = By.xpath("//*[contains(@class,'cart-group-item')]/div[1]/div[3]/div/div[2]/div/a[1]/i");
+    private By amount = By.cssSelector("div.gg-input.gg-input-select>select");
+    private By delete = By.cssSelector("a.btn-delete.btn-update-item>i");
 
     public BasketPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public String getProductPrice() {
+    public String getProductPrice() throws InterruptedException {
+        Thread.sleep(1000);
         return driver.findElement(price).getText();
     }
 

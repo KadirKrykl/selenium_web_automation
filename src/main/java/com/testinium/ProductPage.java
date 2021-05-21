@@ -9,9 +9,11 @@ import java.util.concurrent.TimeUnit;
 public class ProductPage {
     protected WebDriver driver;
     private By price = By.xpath("//*[@id='sp-price-lowPrice']");
+    private By pid = By.name("productId");
     private By addToBasket = By.xpath("//*[@id='add-to-basket']");
     private By basketDiv = By.xpath("//*[@id='header_wrapper']/div[4]/div[3]/a");
     private By basketButton = By.xpath("//*[@id='header_wrapper']/div[4]/div[3]/div/div/div/div[2]/div[4]/div[1]/a");
+    
 
     public ProductPage(WebDriver driver){
         this.driver = driver;
