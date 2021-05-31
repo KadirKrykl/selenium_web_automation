@@ -21,6 +21,8 @@ class AppTest {
     @Test
     void testApp() throws InterruptedException, TimeoutException{
         logger.info("Test Başladı...");
+        String email = "";
+        String pass = "";
 
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -34,7 +36,7 @@ class AppTest {
         logger.info("GittiGidiyor sayfası açıldı.");
 
         LoginPage login = home.goToLogin();
-        home = login.loginValidUser("test58@gmail.com", "123456789a");
+        home = login.loginValidUser(email, pass);
         assertEquals("berker341451", home.getUserText());
         logger.info("Giriş Yapıldı.");
 
